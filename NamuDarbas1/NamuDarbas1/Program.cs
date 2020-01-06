@@ -34,7 +34,16 @@ namespace NamuDarbas1
                 return;
                 
             }
-            Console.WriteLine(skaicius);
+            
+            int skaicius1 = Convert.ToInt32(skaicius);
+            if (TeisingiReziai(skaicius1)==false) return;
+            Console.WriteLine("Ivestas teisingas skaicius");
+        }
+
+        static bool TeisingiReziai(int skaitmuo)
+        {
+            if (skaitmuo > -10 && skaitmuo < 10) return true;
+            else return false;
         }
     }
 }
