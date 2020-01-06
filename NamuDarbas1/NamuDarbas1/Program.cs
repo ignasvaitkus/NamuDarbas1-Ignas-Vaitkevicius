@@ -8,12 +8,13 @@ namespace NamuDarbas1
         {
             string skaicius = Console.ReadLine();
             bool arTaiSkaicius = false;
+            
             for (int i = 0; i < skaicius.Length; i++)
             {
                 
                 char simbolis = skaicius[i];
-                
-                if (simbolis <= 0 || simbolis > 0) arTaiSkaicius = true;
+                if (simbolis == '-') continue;
+                if (char.IsDigit(simbolis)) arTaiSkaicius = true;
                 else
                 {
                     arTaiSkaicius = false;
@@ -30,10 +31,10 @@ namespace NamuDarbas1
             else
             {
                 Console.WriteLine("Ivestas neteisingas skaicius, bandykite is naujo");
-
+                return;
                 
             }
-
+            Console.WriteLine(skaicius);
         }
     }
 }
