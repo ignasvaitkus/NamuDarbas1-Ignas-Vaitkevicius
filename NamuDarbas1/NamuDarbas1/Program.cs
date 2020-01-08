@@ -6,7 +6,7 @@ namespace NamuDarbas1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Iveskite skaiciu nuo -9 iki 9 ");
+            Console.WriteLine("Iveskite skaiciu nuo -99 iki 99 ");
             string skaicius = Console.ReadLine();
             bool arTaiSkaicius = false;
             
@@ -32,17 +32,19 @@ namespace NamuDarbas1
             
             
             int skaicius1 = Convert.ToInt32(skaicius);
-            if (TeisingiReziai(skaicius1)==false) return;
+            if (TeisingiReziai(skaicius1) == false)
+            { Console.WriteLine("Neteisingi reziai!"); return; }
 
-            if(skaicius1>-10 && skaicius1<10) Console.WriteLine(VienzenkliaiSkaiciai(skaicius1));
-            else if (skaicius1>-20 && skaicius1<20) Console.WriteLine(VienzenkliaiSkaiciai(skaicius1));
+            if(skaicius1>-10 && skaicius1<0) Console.WriteLine("Minus "+VienzenkliaiSkaiciai(skaicius1));
+            else if (skaicius1>0 && skaicius1<10) Console.WriteLine(VienzenkliaiSkaiciai(skaicius1));
+            else if (skaicius1>-20 && skaicius1<20) Console.WriteLine(DvizenkliaiSkaiciai(skaicius1));
             else Console.WriteLine(DvizenkliaiSkaiciai(skaicius1) + " " + VienzenkliaiSkaiciai(skaicius1));
 
         }
 
         static bool TeisingiReziai(int skaitmuo)
         {
-            if (skaitmuo > -20 && skaitmuo < 20) return true;
+            if (skaitmuo > -100 && skaitmuo < 100) return true;
             else return false;
         }
 
@@ -50,24 +52,25 @@ namespace NamuDarbas1
         {
             string word="";
             string zodis = "";
-
+            if (skaitmuo > -100 && skaitmuo < -19) skaitmuo = skaitmuo % 10;
+            else if (skaitmuo>19 && skaitmuo< 100) skaitmuo = skaitmuo % 10;
 
             if (skaitmuo < 0)
             { skaitmuo = skaitmuo * -1;
-                zodis = "minus "; }
+                }
                 
                 switch (skaitmuo)
             {
-                    case 1:  zodis=zodis+"vienas";  break;
-                    case 2:  zodis=zodis+"du";    break;
-                    case 3:  zodis=zodis+"trys";    break;
-                    case 4:  zodis=zodis+"keturi";  break;
-                    case 5:  zodis=zodis+"penki";   break;
-                    case 6:  zodis=zodis+"sesi";    break;
-                    case 7:  zodis=zodis+"septyni"; break;
-                    case 8:  zodis=zodis+"astuoni"; break;
-                    case 9:  zodis=zodis+"devyni";  break;
-                    case 0:  zodis=zodis+"nulis";   break;
+                    case 1:  zodis="vienas";  break;
+                    case 2:  zodis="du";    break;
+                    case 3:  zodis="trys";    break;
+                    case 4:  zodis="keturi";  break;
+                    case 5:  zodis="penki";   break;
+                    case 6:  zodis="sesi";    break;
+                    case 7:  zodis="septyni"; break;
+                    case 8:  zodis="astuoni"; break;
+                    case 9:  zodis="devyni";  break;
+                    case 0:  zodis="nulis";   break;
 
             }
 
