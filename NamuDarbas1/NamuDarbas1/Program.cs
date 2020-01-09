@@ -9,7 +9,8 @@ namespace NamuDarbas1
             Console.WriteLine("Iveskite skaiciu nuo -99 iki 99 ");
             string skaicius = Console.ReadLine();
             bool arTaiSkaicius = false;
-            
+            int x = 0;
+
             for (int i = 0; i < skaicius.Length; i++)
             {
                 
@@ -35,10 +36,10 @@ namespace NamuDarbas1
             if (TeisingiReziai(skaicius1) == false)
             { Console.WriteLine("Neteisingi reziai!"); return; }
 
-            if(skaicius1>-10 && skaicius1<0) Console.WriteLine("Minus "+VienzenkliaiSkaiciai(skaicius1));
-            else if (skaicius1>0 && skaicius1<10) Console.WriteLine(VienzenkliaiSkaiciai(skaicius1));
-            else if (skaicius1>-20 && skaicius1<20) Console.WriteLine(DvizenkliaiSkaiciai(skaicius1));
-            else Console.WriteLine(DvizenkliaiSkaiciai(skaicius1) + " " + VienzenkliaiSkaiciai(skaicius1));
+            if(skaicius1>-10 && skaicius1<0) Console.WriteLine("Minus "+VienzenkliaiSkaiciai(skaicius1,x));
+            else if (skaicius1>0 && skaicius1<10) Console.WriteLine(VienzenkliaiSkaiciai(skaicius1,x));
+            else if (skaicius1>-20 && skaicius1<20) Console.WriteLine(DvizenkliaiSkaiciai(skaicius1,x));
+            else Console.WriteLine(DvizenkliaiSkaiciai(skaicius1,x) + " " + VienzenkliaiSkaiciai(skaicius1,x));
 
         }
 
@@ -48,12 +49,13 @@ namespace NamuDarbas1
             else return false;
         }
 
-        static string VienzenkliaiSkaiciai(int skaitmuo)
+        static string VienzenkliaiSkaiciai(int skaitmuo, int x)
         {
             string word="";
             string zodis = "";
-            if (skaitmuo > -100 && skaitmuo < -19) skaitmuo = skaitmuo % 10;
-            else if (skaitmuo>19 && skaitmuo< 100) skaitmuo = skaitmuo % 10;
+            if (x == 1) return "";
+            if (skaitmuo > -100 && skaitmuo < -19 && skaitmuo > 19 && skaitmuo < 100) skaitmuo = skaitmuo % 10;
+            
 
             if (skaitmuo < 0)
             { skaitmuo = skaitmuo * -1;
@@ -77,11 +79,11 @@ namespace NamuDarbas1
             return zodis;
         }
 
-        static string DvizenkliaiSkaiciai(int skaitmuo)
+        static string DvizenkliaiSkaiciai(int skaitmuo,int x)
         {
             string word = "";
             string zodis = "";
-
+            x++;
 
             if (skaitmuo < 0)
             {
